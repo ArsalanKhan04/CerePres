@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EEGWriter - FYP Mid-2 Defence</title>
-    
-    <!-- Fonts - Dark Botanical uses elegant serif + clean sans -->
-    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cormorant@400,500,600,700&f[]=satoshi@400,500,600,700&display=swap">
-    
+
+    <link rel="stylesheet"
+        href="https://api.fontshare.com/v2/css?f[]=cormorant@400,500,600,700&f[]=satoshi@400,500,600,700&display=swap">
+
     <style>
         /* ===========================================
            CSS CUSTOM PROPERTIES (DARK BOTANICAL THEME)
-           Elegant, sophisticated, gold accents on dark
            =========================================== */
         :root {
-            /* Colors - Dark Botanical: Deep, rich, elegant */
+            /* Colors */
             --bg-primary: #0a0d0c;
             --bg-secondary: #12171a;
             --bg-tertiary: #1a2025;
             --bg-card: #141a1d;
-            --text-primary: #f5f1e8;
-            --text-secondary: #9ca3a1;
-            --text-muted: #6b7370;
+            --text-primary: #fdfaf2;
+            --text-secondary: #b8c1be;
+            --text-muted: #8c9693;
             --accent: #c5a059;
             --accent-light: #d4b978;
             --accent-dark: #a68942;
@@ -30,23 +30,22 @@
             --accent-green: #7d9e7d;
             --border-color: rgba(197, 160, 89, 0.15);
             --border-light: rgba(245, 241, 232, 0.08);
-            --glow-gold: rgba(197, 160, 89, 0.2);
-            
-            /* Typography - Elegant serif for headings, clean sans for body */
+
+            /* Typography - Scaled UP for Presentation Readability */
             --font-display: 'Cormorant', Georgia, serif;
             --font-body: 'Satoshi', sans-serif;
-            --title-size: clamp(2.5rem, 8vw, 6rem);
-            --h2-size: clamp(1.75rem, 4.5vw, 3rem);
-            --h3-size: clamp(1.2rem, 2.2vw, 1.55rem);
-            --subtitle-size: clamp(1.1rem, 2.2vw, 1.35rem);
-            --body-size: clamp(0.98rem, 1.6vw, 1.2rem);
-            --small-size: clamp(0.85rem, 1.1vw, 0.95rem);
-            
+            --title-size: clamp(3rem, 8vw, 6.5rem);
+            --h2-size: clamp(2.2rem, 5vw, 3.5rem);
+            --h3-size: clamp(1.4rem, 2.8vw, 2rem);
+            --subtitle-size: clamp(1.3rem, 2.5vw, 1.6rem);
+            --body-size: clamp(1.15rem, 1.8vw, 1.4rem);
+            --small-size: clamp(1rem, 1.3vw, 1.2rem);
+
             /* Spacing */
-            --slide-padding: clamp(2rem, 6vw, 6rem);
-            --content-gap: clamp(1.5rem, 3vw, 3rem);
-            --element-gap: clamp(0.75rem, 1.5vw, 1.5rem);
-            
+            --slide-padding: clamp(1.5rem, 5vw, 5rem);
+            --content-gap: clamp(1.5rem, 3vw, 2.5rem);
+            --element-gap: clamp(0.75rem, 1.5vw, 1.2rem);
+
             /* Animation */
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
@@ -76,7 +75,7 @@
             color: var(--text-primary);
             overflow-x: hidden;
             height: 100%;
-            line-height: 1.6;
+            line-height: 1.5;
             font-weight: 400;
         }
 
@@ -104,7 +103,7 @@
             justify-content: center;
             max-height: 100%;
             overflow: hidden;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             width: 100%;
             position: relative;
@@ -152,14 +151,23 @@
         }
 
         @keyframes drift {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(25px, -20px) rotate(3deg); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(25px, -20px) rotate(3deg);
+            }
         }
 
         /* ===========================================
            TYPOGRAPHY
            =========================================== */
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             font-family: var(--font-display);
             font-weight: 600;
             letter-spacing: -0.01em;
@@ -188,8 +196,8 @@
             font-size: var(--subtitle-size);
             color: var(--text-secondary);
             font-weight: 400;
-            max-width: 600px;
-            line-height: 1.6;
+            max-width: 800px;
+            line-height: 1.5;
         }
 
         .label {
@@ -198,7 +206,7 @@
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 0.2em;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 1rem;
             display: block;
         }
@@ -217,10 +225,9 @@
             font-weight: 700;
         }
 
-        /* Large numbers - elegant style */
         .big-number {
             font-family: var(--font-display);
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
             font-weight: 700;
             line-height: 1;
             color: var(--accent);
@@ -257,7 +264,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: clamp(1.25rem, 2.5vw, 2rem);
+            padding: clamp(1rem, 2vw, 1.75rem);
             transition: all var(--duration-fast) ease;
             position: relative;
             overflow: hidden;
@@ -286,13 +293,13 @@
 
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
             gap: var(--element-gap);
         }
 
         .card-title {
             font-family: var(--font-display);
-            font-size: clamp(1rem, 1.6vw, 1.25rem);
+            font-size: clamp(1.2rem, 1.8vw, 1.5rem);
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 0.5rem;
@@ -304,7 +311,6 @@
             line-height: 1.5;
         }
 
-        /* Outlined card variant */
         .card.outlined {
             background: transparent;
             border: 1px solid var(--border-color);
@@ -339,7 +345,6 @@
             transform: rotate(45deg);
         }
 
-        /* Numbered list - elegant style */
         .numbered-list {
             list-style: none;
             counter-reset: item;
@@ -383,15 +388,6 @@
             min-width: 150px;
         }
 
-        .stat-value {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            font-style: italic;
-            color: var(--accent);
-            line-height: 1;
-        }
-
         .stat-label {
             font-size: var(--small-size);
             color: var(--text-secondary);
@@ -400,7 +396,17 @@
             letter-spacing: 0.1em;
         }
 
-        /* Progress bars - elegant style */
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: clamp(2.75rem, 7vw, 4.75rem);
+            font-weight: 800;
+            font-style: italic;
+            color: var(--accent-dark);
+            line-height: 1;
+            letter-spacing: 0.02em;
+            text-shadow: 0 8px 20px rgba(165, 135, 66, 0.25);
+        }
+
         .progress-meta {
             display: flex;
             justify-content: space-between;
@@ -428,7 +434,7 @@
         .progress-bar {
             background: var(--bg-tertiary);
             border-radius: 2px;
-            height: 3px;
+            height: 4px;
             overflow: hidden;
             margin-top: 0.5rem;
         }
@@ -440,9 +446,13 @@
             transition: width 1s var(--ease-out-expo);
         }
 
-        .progress-fill.green { background: linear-gradient(90deg, #5a7d5a, var(--accent-green)); }
-        .progress-fill.yellow { background: linear-gradient(90deg, var(--accent-dark), var(--accent)); }
-        .progress-fill.red { background: linear-gradient(90deg, #a65050, var(--accent-warning)); }
+        .progress-fill.green {
+            background: linear-gradient(90deg, #5a7d5a, var(--accent-green));
+        }
+
+        .progress-fill.yellow {
+            background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+        }
 
         /* ===========================================
            TAGS & BADGES
@@ -475,17 +485,17 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.5rem 1.25rem;
+            padding: 0.6rem 1.4rem;
             background: var(--bg-tertiary);
             border: 1px solid var(--border-color);
-            border-radius: 2px;
-            font-size: var(--small-size);
+            border-radius: 4px;
+            font-size: var(--body-size);
             font-weight: 500;
             color: var(--text-primary);
         }
 
         /* ===========================================
-           TWO-COLUMN LAYOUT
+           LAYOUT GRIDS
            =========================================== */
         .two-column {
             display: grid;
@@ -498,8 +508,52 @@
             align-items: center;
         }
 
+        .uneven-columns {
+            display: grid;
+            grid-template-columns: 1fr 1.35fr;
+            gap: var(--content-gap);
+            align-items: start;
+        }
+
+        .uneven-columns.align-center {
+            align-items: center;
+        }
+
+        .timeline-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+            gap: var(--content-gap);
+            align-items: start;
+        }
+
+        .stacked-cards {
+            display: flex;
+            flex-direction: column;
+            gap: var(--element-gap);
+        }
+
+        .timeline-card {
+            padding: clamp(1.25rem, 2.5vw, 2rem);
+        }
+
+        .timeline-card .timeline {
+            padding-left: 2rem;
+        }
+
+        .timeline-card .timeline::before {
+            left: 5px;
+        }
+
+        .timeline-card .timeline-item::before {
+            left: -2rem;
+            top: 1rem;
+        }
+
         @media (max-width: 900px) {
-            .two-column {
+
+            .two-column,
+            .uneven-columns,
+            .timeline-layout {
                 grid-template-columns: 1fr;
             }
         }
@@ -509,7 +563,6 @@
            =========================================== */
         .slide-image {
             max-width: 100%;
-            max-height: min(45vh, 400px);
             object-fit: contain;
             border-radius: 4px;
             border: 1px solid var(--border-color);
@@ -517,7 +570,7 @@
 
         .image-frame {
             background: var(--bg-secondary);
-            padding: 1rem;
+            padding: 0.5rem;
             border-radius: 8px;
             border: 1px solid var(--border-color);
             box-shadow: 0 0 30px rgba(197, 160, 89, 0.05);
@@ -533,16 +586,11 @@
         }
 
         .arch-block {
-            padding: 1rem;
+            padding: 1.2rem;
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             border-radius: 4px;
             text-align: center;
-            transition: all var(--duration-fast) ease;
-        }
-
-        .arch-block:hover {
-            border-color: var(--accent);
         }
 
         .arch-block.highlight {
@@ -553,7 +601,7 @@
 
         .arch-block-title {
             font-family: var(--font-display);
-            font-size: var(--small-size);
+            font-size: var(--body-size);
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
@@ -561,32 +609,26 @@
         }
 
         .arch-block-content {
-            font-size: clamp(0.7rem, 1vw, 0.8rem);
+            font-size: var(--small-size);
             line-height: 1.4;
             color: var(--text-secondary);
         }
 
         .arch-block.highlight .arch-block-content {
-            color: rgba(10, 13, 12, 0.8);
+            color: rgba(10, 13, 12, 0.85);
         }
 
         .arch-block.highlight .arch-block-title {
             color: var(--bg-primary);
         }
 
-        @media (max-width: 768px) {
-            .architecture {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
         /* ===========================================
-           TIMELINE
+           TIMELINE & CHALLENGES
            =========================================== */
         .timeline {
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            gap: 1.5rem;
             position: relative;
             padding-left: 2rem;
         }
@@ -598,7 +640,8 @@
             top: 0;
             bottom: 0;
             width: 1px;
-            background: linear-gradient(180deg, var(--accent), transparent);
+            background: var(--accent);
+            opacity: 0.7;
         }
 
         .timeline-item {
@@ -609,29 +652,26 @@
             content: '';
             position: absolute;
             left: -2rem;
-            top: 0.4rem;
-            width: 10px;
-            height: 10px;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
             background: var(--accent);
             transform: rotate(45deg);
         }
 
         .timeline-title {
             font-family: var(--font-display);
-            font-size: var(--body-size);
+            font-size: var(--h3-size);
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 0.25rem;
         }
 
         .timeline-text {
-            font-size: var(--small-size);
+            font-size: var(--body-size);
             color: var(--text-secondary);
         }
 
-        /* ===========================================
-           CHALLENGE/SOLUTION
-           =========================================== */
         .challenge-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -644,16 +684,9 @@
             border-bottom: none;
         }
 
-        @media (max-width: 600px) {
-            .challenge-row {
-                grid-template-columns: 1fr;
-                gap: 0.75rem;
-            }
-        }
-
         .challenge-label {
             font-family: var(--font-display);
-            font-size: clamp(0.65rem, 0.9vw, 0.75rem);
+            font-size: var(--small-size);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.15em;
@@ -661,7 +694,7 @@
         }
 
         .challenge-text {
-            font-size: var(--small-size);
+            font-size: var(--body-size);
             color: var(--text-secondary);
         }
 
@@ -678,25 +711,18 @@
            =========================================== */
         .agenda-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 0.75rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
         }
 
         .agenda-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.25rem;
+            gap: 1.2rem;
+            padding: 1.2rem 1.5rem;
             background: var(--bg-secondary);
             border-radius: 4px;
-            border-left: 2px solid var(--accent);
-            transition: all var(--duration-fast) ease;
-        }
-
-        .agenda-item:hover {
-            background: var(--bg-tertiary);
-            transform: translateX(4px);
-            border-left-color: var(--accent-light);
+            border-left: 3px solid var(--accent);
         }
 
         .agenda-number {
@@ -720,8 +746,7 @@
         .reveal {
             opacity: 0;
             transform: translateY(25px);
-            transition: opacity var(--duration-normal) var(--ease-out-cubic),
-                        transform var(--duration-normal) var(--ease-out-cubic);
+            transition: opacity var(--duration-normal) var(--ease-out-cubic), transform var(--duration-normal) var(--ease-out-cubic);
         }
 
         .slide.visible .reveal {
@@ -729,19 +754,34 @@
             transform: translateY(0);
         }
 
-        /* Stagger children */
-        .reveal:nth-child(1) { transition-delay: 0.1s; }
-        .reveal:nth-child(2) { transition-delay: 0.2s; }
-        .reveal:nth-child(3) { transition-delay: 0.3s; }
-        .reveal:nth-child(4) { transition-delay: 0.4s; }
-        .reveal:nth-child(5) { transition-delay: 0.5s; }
-        .reveal:nth-child(6) { transition-delay: 0.6s; }
+        .reveal:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .reveal:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .reveal:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .reveal:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .reveal:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        .reveal:nth-child(6) {
+            transition-delay: 0.6s;
+        }
 
         .reveal-scale {
             opacity: 0;
             transform: scale(0.95);
-            transition: opacity var(--duration-normal) var(--ease-out-cubic),
-                        transform var(--duration-normal) var(--ease-out-expo);
+            transition: opacity var(--duration-normal) var(--ease-out-cubic), transform var(--duration-normal) var(--ease-out-expo);
         }
 
         .slide.visible .reveal-scale {
@@ -749,21 +789,8 @@
             transform: scale(1);
         }
 
-        /* Blur reveal */
-        .reveal-blur {
-            opacity: 0;
-            filter: blur(8px);
-            transition: opacity var(--duration-normal) var(--ease-out-cubic),
-                        filter var(--duration-normal) var(--ease-out-cubic);
-        }
-
-        .slide.visible .reveal-blur {
-            opacity: 1;
-            filter: blur(0);
-        }
-
         /* ===========================================
-           NAVIGATION
+           NAVIGATION & UI
            =========================================== */
         .nav-dots {
             position: fixed;
@@ -772,48 +799,42 @@
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
             z-index: 1000;
         }
 
         .nav-dot {
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             background: var(--text-muted);
             border: none;
             cursor: pointer;
-            transition: all var(--duration-fast) ease;
             padding: 0;
             transform: rotate(45deg);
         }
 
+        .nav-dot.active,
         .nav-dot:hover {
             background: var(--accent);
             transform: rotate(45deg) scale(1.5);
         }
 
-        .nav-dot.active {
-            background: var(--accent);
-        }
-
-        /* Progress bar */
         .progress-indicator {
             position: fixed;
             top: 0;
             left: 0;
-            height: 2px;
+            height: 3px;
             background: linear-gradient(90deg, var(--accent-dark), var(--accent), var(--accent-light));
             z-index: 1001;
             transition: width var(--duration-fast) ease;
         }
 
-        /* Slide counter */
         .slide-counter {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
             font-family: var(--font-display);
-            font-size: var(--small-size);
+            font-size: var(--body-size);
             font-weight: 500;
             font-style: italic;
             color: var(--text-muted);
@@ -825,68 +846,7 @@
         }
 
         /* ===========================================
-           RESPONSIVE BREAKPOINTS
-           =========================================== */
-        @media (max-height: 700px) {
-            :root {
-                --slide-padding: clamp(1.5rem, 4vw, 3rem);
-                --content-gap: clamp(1rem, 2vw, 2rem);
-                --title-size: clamp(2rem, 6vw, 4rem);
-                --h2-size: clamp(1.5rem, 4vw, 2.25rem);
-            }
-        }
-
-        @media (max-height: 600px) {
-            :root {
-                --slide-padding: clamp(1rem, 3vw, 2rem);
-                --content-gap: clamp(0.75rem, 1.5vw, 1.25rem);
-                --title-size: clamp(1.5rem, 5vw, 2.5rem);
-            }
-            
-            .nav-dots, .slide-counter {
-                display: none;
-            }
-        }
-
-        @media (max-height: 500px) {
-            :root {
-                --slide-padding: clamp(0.75rem, 2.5vw, 1.5rem);
-                --title-size: clamp(1.25rem, 4.5vw, 2rem);
-                --h2-size: clamp(1.1rem, 3.5vw, 1.5rem);
-                --body-size: clamp(0.7rem, 1.2vw, 0.875rem);
-            }
-        }
-
-        @media (max-width: 600px) {
-            :root {
-                --title-size: clamp(1.75rem, 9vw, 3rem);
-            }
-            
-            .nav-dots {
-                right: 1rem;
-            }
-            
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===========================================
-           REDUCED MOTION
-           =========================================== */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.2s !important;
-            }
-            
-            html {
-                scroll-behavior: auto;
-            }
-        }
-
-        /* ===========================================
-           TITLE SLIDE
+           TITLE SLIDE COMPRESSION
            =========================================== */
         .title-slide {
             text-align: center;
@@ -898,11 +858,16 @@
         }
 
         .title-slide h1 {
-            margin-bottom: var(--element-gap);
+            margin-bottom: 0.2rem;
+        }
+
+        .title-slide .divider {
+            margin: 0.75rem 0;
+            justify-content: center;
         }
 
         .title-slide .subtitle {
-            margin-bottom: var(--content-gap);
+            margin: 0 auto 1.2rem auto !important;
             max-width: 700px;
         }
 
@@ -919,93 +884,173 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 1.25rem;
-            margin-top: 2.25rem;
+            margin-top: 1.5rem;
         }
 
         .partner-logo {
-            height: clamp(63px, 9vh, 99px);
+            height: clamp(75px, 12vh, 140px);
             width: auto;
             opacity: 0.92;
-            filter: none;
             background: rgba(245, 241, 232, 0.96);
             border: 1px solid rgba(197, 160, 89, 0.22);
             border-radius: 12px;
-            padding: 12px 16px;
+            padding: 12px 18px;
             box-shadow: 0 10px 28px rgba(10, 13, 12, 0.45);
-            transition: opacity var(--duration-fast) ease, transform var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
-        }
-
-        .partner-logo:hover {
-            opacity: 1;
-            transform: translateY(-2px);
-            box-shadow: 0 14px 34px rgba(10, 13, 12, 0.55);
-        }
-
-        .partner-logo.tall {
-            height: clamp(51px, 7.5vh, 78px);
         }
 
         .partner-logo.seecs {
-            height: clamp(64px, 9.5vh, 98px);
+            height: clamp(75px, 12.5vh, 140px);
         }
 
         .partner-divider {
             width: 1px;
-            height: clamp(20px, 3vh, 32px);
+            height: clamp(15px, 2vh, 25px);
             background: var(--border-color);
             opacity: 0.9;
         }
 
-        /* Meta info */
         .meta-info {
-            margin-top: var(--element-gap);
-            font-size: var(--small-size);
+            margin-top: 1rem;
+            font-size: var(--body-size);
             color: var(--text-muted);
         }
 
         .meta-info span {
             color: var(--accent);
         }
+
+        /* ===========================================
+           PRINT STYLES FOR PDF EXPORT
+           =========================================== */
+        @media print {
+            @page {
+                size: 16in 9in;
+                /* Force Widescreen 16:9 Aspect Ratio */
+                margin: 0;
+                /* Eliminate default browser margins */
+            }
+
+            html,
+            body {
+                width: 100% !important;
+                height: 100% !important;
+                margin: 0;
+                padding: 0;
+                overflow: hidden !important;
+                scroll-snap-type: none;
+                background: var(--bg-primary) !important;
+            }
+
+            /* Lock variable calculations for consistent print rendering */
+            :root {
+                --title-size: 5rem !important;
+                --h2-size: 3.5rem !important;
+                --h3-size: 2rem !important;
+                --subtitle-size: 1.8rem !important;
+                --body-size: 1.4rem !important;
+                --small-size: 1.15rem !important;
+                --slide-padding: 3.5rem !important;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            .slide {
+                width: 100vw !important;
+                height: 100vh !important;
+                max-height: 100vh !important;
+                page-break-after: always;
+                page-break-inside: avoid;
+                scroll-snap-align: none;
+                position: relative;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* Extra safety compression for the title slide on PDF */
+            .title-slide h1 {
+                margin-bottom: 0 !important;
+            }
+
+            .title-slide .divider {
+                margin: 0.5rem 0 !important;
+            }
+
+            .title-slide .subtitle {
+                margin: 0 auto 1rem auto !important;
+            }
+
+            .partners-row {
+                margin-top: 1rem !important;
+            }
+
+            .partner-logo {
+                height: 110px !important;
+            }
+
+            .partner-logo.seecs {
+                height: 110px !important;
+            }
+
+            .meta-info {
+                margin-top: 0.75rem !important;
+            }
+
+            .reveal,
+            .reveal-scale,
+            .reveal-blur {
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+                transition: none !important;
+            }
+
+            .nav-dots,
+            .progress-indicator,
+            .slide-counter {
+                display: none !important;
+            }
+        }
     </style>
 </head>
-<body>
-    <!-- Progress indicator -->
-    <div class="progress-indicator" id="progress"></div>
-    
-    <!-- Navigation dots -->
-    <nav class="nav-dots" id="navDots"></nav>
-    
-    <!-- Slide counter -->
-    <div class="slide-counter">
-        <span id="currentSlide">01</span> / <span id="totalSlides">19</span>
-    </div>
 
-    <!-- ==================== SLIDE 1: TITLE ==================== -->
+<body>
+    <div class="progress-indicator" id="progress"></div>
+    <nav class="nav-dots" id="navDots"></nav>
+    <div class="slide-counter"><span id="currentSlide">01</span> / <span id="totalSlides">19</span></div>
+
     <section class="slide title-slide" data-slide="1">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
         <div class="botanical botanical-3"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Final Year Project &middot; Mid-2 Defence</span>
             <h1 class="reveal">EEG<span class="highlight">Writer</span></h1>
-            
+
             <div class="divider reveal">
                 <div class="divider-line"></div>
                 <div class="divider-diamond"></div>
                 <div class="divider-line"></div>
             </div>
-            
-            <p class="subtitle reveal">Multimodal Deep Learning Framework for Automated EEG Diagnostic Report Generation</p>
-            
+
+            <p class="subtitle reveal">Multimodal Deep Learning Framework for Automated EEG Diagnostic Report Generation
+            </p>
+
             <div class="team-row reveal">
                 <div class="badge">Muhammad Arsalan Khan</div>
                 <div class="badge">Abdullah Waqas</div>
                 <div class="badge">Muhammad Athar</div>
             </div>
-            
+
             <p class="meta-info reveal">
-                Advisor: Dr. Faisal Shafait <span>&middot;</span> Co-Advisors: Dr. Muhammad Naseer Bajwa, Dr. Adnan ul Hasan
+                Advisor: Dr. Faisal Shafait <span>&middot;</span> Co-Advisors: Dr. Muhammad Naseer Bajwa, Dr. Adnan ul
+                Hasan
             </p>
 
             <div class="partners-row reveal">
@@ -1020,79 +1065,55 @@
         </div>
     </section>
 
-    <!-- ==================== SLIDE 2: AGENDA ==================== -->
     <section class="slide" data-slide="2">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Overview</span>
             <h2 class="reveal">Agenda</h2>
-            
+
             <div class="agenda-list reveal" style="margin-top: var(--content-gap);">
-                <div class="agenda-item">
-                    <span class="agenda-number">01</span>
-                    <span class="agenda-text">Quick Recap</span>
-                </div>
-                <div class="agenda-item">
-                    <span class="agenda-number">02</span>
-                    <span class="agenda-text">Progress Overview</span>
-                </div>
-                <div class="agenda-item">
-                    <span class="agenda-number">03</span>
-                    <span class="agenda-text">Technical Architecture</span>
-                </div>
-                <div class="agenda-item">
-                    <span class="agenda-number">04</span>
-                    <span class="agenda-text">AI Models & LLM</span>
-                </div>
-                <div class="agenda-item">
-                    <span class="agenda-number">05</span>
-                    <span class="agenda-text">Application Demo</span>
-                </div>
-                <div class="agenda-item">
-                    <span class="agenda-number">06</span>
-                    <span class="agenda-text">Challenges</span>
-                </div>
-                <div class="agenda-item">
-                    <span class="agenda-number">07</span>
-                    <span class="agenda-text">Field Visits</span>
-                </div>
-                <div class="agenda-item">
-                    <span class="agenda-number">08</span>
-                    <span class="agenda-text">Testing Plan</span>
-                </div>
-                <div class="agenda-item">
-                    <span class="agenda-number">09</span>
-                    <span class="agenda-text">UN SDG Relevance</span>
-                </div>
-                <div class="agenda-item">
-                    <span class="agenda-number">10</span>
-                    <span class="agenda-text">Project Management</span>
-                </div>
-                <div class="agenda-item">
-                    <span class="agenda-number">11</span>
-                    <span class="agenda-text">Remaining Work</span>
-                </div>
+                <div class="agenda-item"><span class="agenda-number">01</span><span class="agenda-text">Quick
+                        Recap</span></div>
+                <div class="agenda-item"><span class="agenda-number">02</span><span class="agenda-text">Progress
+                        Overview</span></div>
+                <div class="agenda-item"><span class="agenda-number">03</span><span class="agenda-text">Technical
+                        Architecture</span></div>
+                <div class="agenda-item"><span class="agenda-number">04</span><span class="agenda-text">AI Models &
+                        LLM</span></div>
+                <div class="agenda-item"><span class="agenda-number">05</span><span class="agenda-text">Application
+                        Demo</span></div>
+                <div class="agenda-item"><span class="agenda-number">06</span><span
+                        class="agenda-text">Challenges</span></div>
+                <div class="agenda-item"><span class="agenda-number">07</span><span class="agenda-text">Field
+                        Visits</span></div>
+                <div class="agenda-item"><span class="agenda-number">08</span><span class="agenda-text">Testing
+                        Plan</span></div>
+                <div class="agenda-item"><span class="agenda-number">09</span><span class="agenda-text">UN SDG
+                        Relevance</span></div>
+                <div class="agenda-item"><span class="agenda-number">10</span><span class="agenda-text">Project
+                        Management</span></div>
+                <div class="agenda-item"><span class="agenda-number">11</span><span class="agenda-text">Remaining
+                        Work</span></div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== SLIDE 3: VALUE PROPOSITION ==================== -->
     <section class="slide" data-slide="3">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">The Problem</span>
             <h2 class="reveal">Why EEGWriter?</h2>
-            
+
             <div class="two-column align-center" style="margin-top: var(--content-gap);">
                 <div>
                     <p class="subtitle reveal" style="margin-bottom: var(--element-gap);">
-                        EEGWriter is an AI tool for neurologists that analyzes EEG signals, highlights features and abnormalities, and generates structured reports.
+                        EEGWriter is an AI tool for neurologists that analyzes EEG signals, highlights features and
+                        abnormalities, and generates structured reports.
                     </p>
-                    
                     <ul class="feature-list reveal">
                         <li>Severe neurologist shortage globally</li>
                         <li>EEG review takes 20-40 minutes per study</li>
@@ -1100,7 +1121,6 @@
                         <li>Growing caseload needs automation</li>
                     </ul>
                 </div>
-                
                 <div class="stats-row reveal-scale">
                     <div class="stat-item">
                         <div class="stat-value">210</div>
@@ -1115,92 +1135,90 @@
         </div>
     </section>
 
-    <!-- ==================== SLIDE 4: PROGRESS OVERVIEW ==================== -->
     <section class="slide" data-slide="4">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Since FYP-1</span>
             <h2 class="reveal">Progress Overview</h2>
-            
+
             <div class="card-grid" style="margin-top: var(--content-gap);">
                 <div class="card reveal">
                     <div class="card-title">Backend System</div>
-                    <div class="card-text">FastAPI + Celery + Redis async architecture</div>
-                    <div class="progress-meta">
-                        <span class="progress-label">Completed</span>
-                        <span class="progress-value">95%</span>
+                    <div class="card-text">FastAPI + Celery + Redis architecture</div>
+                    <div class="progress-meta"><span class="progress-label">Completed</span><span
+                            class="progress-value">95%</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill green" style="width: 95%;"></div>
                     </div>
-                    <div class="progress-bar"><div class="progress-fill green" style="width: 95%;"></div></div>
                 </div>
                 <div class="card reveal">
                     <div class="card-title">Frontend Application</div>
                     <div class="card-text">React dashboards for 3 user roles</div>
-                    <div class="progress-meta">
-                        <span class="progress-label">Completed</span>
-                        <span class="progress-value">95%</span>
+                    <div class="progress-meta"><span class="progress-label">Completed</span><span
+                            class="progress-value">95%</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill green" style="width: 95%;"></div>
                     </div>
-                    <div class="progress-bar"><div class="progress-fill green" style="width: 95%;"></div></div>
                 </div>
                 <div class="card reveal">
                     <div class="card-title">Model Performance</div>
                     <div class="card-text">NeuroGate (90.7%) & NeuroTransformer (83.17%)</div>
-                    <div class="progress-meta">
-                        <span class="progress-label">Completed</span>
-                        <span class="progress-value">75%</span>
+                    <div class="progress-meta"><span class="progress-label">Completed</span><span
+                            class="progress-value">75%</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill yellow" style="width: 75%;"></div>
                     </div>
-                    <div class="progress-bar"><div class="progress-fill yellow" style="width: 75%;"></div></div>
                 </div>
                 <div class="card reveal">
                     <div class="card-title">LLM Integration</div>
-                    <div class="card-text">Llama 3.1 8B with custom prompting</div>
-                    <div class="progress-meta">
-                        <span class="progress-label">Completed</span>
-                        <span class="progress-value">95%</span>
+                    <div class="card-text">Qwen 3 8B custom prompting</div>
+                    <div class="progress-meta"><span class="progress-label">Completed</span><span
+                            class="progress-value">95%</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill green" style="width: 95%;"></div>
                     </div>
-                    <div class="progress-bar"><div class="progress-fill green" style="width: 95%;"></div></div>
                 </div>
                 <div class="card reveal">
                     <div class="card-title">EEG Visualization</div>
-                    <div class="card-text">Interactive Plotly.js viewer with filters</div>
-                    <div class="progress-meta">
-                        <span class="progress-label">Completed</span>
-                        <span class="progress-value">95%</span>
+                    <div class="card-text">Interactive Plotly.js viewer + filters</div>
+                    <div class="progress-meta"><span class="progress-label">Completed</span><span
+                            class="progress-value">95%</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill green" style="width: 95%;"></div>
                     </div>
-                    <div class="progress-bar"><div class="progress-fill green" style="width: 95%;"></div></div>
                 </div>
                 <div class="card reveal">
                     <div class="card-title">Optimizations</div>
-                    <div class="card-text">Performance tuning & system efficiency</div>
-                    <div class="progress-meta">
-                        <span class="progress-label">Completed</span>
-                        <span class="progress-value">80%</span>
+                    <div class="card-text">Performance tuning & efficiency</div>
+                    <div class="progress-meta"><span class="progress-label">Completed</span><span
+                            class="progress-value">80%</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill yellow" style="width: 80%;"></div>
                     </div>
-                    <div class="progress-bar"><div class="progress-fill yellow" style="width: 80%;"></div></div>
                 </div>
                 <div class="card reveal">
                     <div class="card-title">Testing</div>
                     <div class="card-text">Unit, integration & system testing</div>
-                    <div class="progress-meta">
-                        <span class="progress-label">Completed</span>
-                        <span class="progress-value">80%</span>
+                    <div class="progress-meta"><span class="progress-label">Completed</span><span
+                            class="progress-value">80%</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill yellow" style="width: 80%;"></div>
                     </div>
-                    <div class="progress-bar"><div class="progress-fill yellow" style="width: 80%;"></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== SLIDE 5: ARCHITECTURE ==================== -->
     <section class="slide" data-slide="5">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">System Design</span>
             <h2 class="reveal">Technical Architecture</h2>
-            
+
             <div class="architecture reveal" style="margin-top: var(--content-gap);">
                 <div class="arch-block">
                     <div class="arch-block-title">Presentation</div>
@@ -1219,30 +1237,24 @@
                     <div class="arch-block-content">SQLite DB<br>File Storage<br>EDF Files</div>
                 </div>
             </div>
-            
+
             <div class="tags reveal" style="margin-top: var(--content-gap); justify-content: center;">
-                <span class="tag">React</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag">FastAPI</span>
-                <span class="tag">Celery</span>
-                <span class="tag">Redis</span>
-                <span class="tag">PyTorch</span>
-                <span class="tag">Docker</span>
-                <span class="tag">Qwen3 8B</span>
+                <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">FastAPI</span><span
+                    class="tag">Celery</span><span class="tag">Redis</span><span class="tag">PyTorch</span><span
+                    class="tag">Docker</span><span class="tag">Qwen3 8B</span>
             </div>
         </div>
     </section>
 
-    <!-- ==================== SLIDE 6: AI MODELS ==================== -->
     <section class="slide" data-slide="6">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Deep Learning</span>
             <h2 class="reveal">AI Models & Results</h2>
-            
-            <div class="two-column" style="margin-top: var(--content-gap);">
+
+            <div class="two-column align-center" style="margin-top: var(--content-gap);">
                 <div>
                     <div class="card reveal" style="margin-bottom: var(--element-gap);">
                         <h3 style="margin-bottom: 0.5rem;">NeuroGate</h3>
@@ -1253,7 +1265,6 @@
                             <li>Conv + Transformer architecture</li>
                         </ul>
                     </div>
-                    
                     <div class="card reveal">
                         <h3 style="margin-bottom: 0.5rem;">NeuroTransformer</h3>
                         <div class="card-text" style="margin-bottom: 0.75rem;">Fine-grained Event Detection</div>
@@ -1264,27 +1275,25 @@
                         </ul>
                     </div>
                 </div>
-                
-                <div class="image-frame reveal-scale">
-                    <img src="assets/brain_topomap.png" alt="Brain Topomap Visualization" class="slide-image" style="width: 100%;">
+                <div class="image-frame reveal-scale" style="padding: 0.5rem;">
+                    <img src="assets/brain_topomap.png" alt="Brain Topomap Visualization" class="slide-image"
+                        style="width: 100%; max-height: 60vh;">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== SLIDE 7: LLM INTEGRATION ==================== -->
     <section class="slide" data-slide="7">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Report Generation</span>
             <h2 class="reveal">LLM Integration</h2>
-            
-            <div class="two-column" style="margin-top: var(--content-gap);">
+
+            <div class="uneven-columns align-center" style="margin-top: var(--content-gap);">
                 <div>
                     <h3 class="reveal" style="margin-bottom: var(--element-gap);">Qwen3 8B</h3>
-                    
                     <ol class="numbered-list reveal">
                         <li>Global prediction from NeuroGate</li>
                         <li>Local predictions by brain regions</li>
@@ -1294,29 +1303,31 @@
                         <li>Model selection via experiments (best BERTScore vs ground truth)</li>
                     </ol>
                 </div>
-                
+
                 <div class="card reveal-scale">
                     <div class="card-title">Experiment Results (BERTScore)</div>
-                    <div class="image-frame" style="margin-top: 0.75rem;">
-                        <img src="assets/llm_scores.jpeg" alt="LLM experiment results (BERTScore vs ground truth)" class="slide-image" style="width: 100%; max-height: min(40vh, 340px);">
+                    <div class="image-frame" style="margin-top: 0.75rem; padding: 0.5rem;">
+                        <img src="assets/llm_scores.jpeg" alt="LLM experiment results" class="slide-image"
+                            style="width: 100%; max-height: 55vh; object-fit: contain;">
                     </div>
-                    <div style="margin-top: 1rem; padding: 0.75rem; background: var(--bg-tertiary); border-radius: 4px; font-size: var(--small-size); color: var(--text-secondary); border-left: 2px solid var(--accent);">
-                        Selected model: <strong class="text-accent">Qwen3 8B</strong> (highest BERTScore against ground truth reports)
+                    <div
+                        style="margin-top: 1rem; padding: 0.75rem; background: var(--bg-tertiary); border-radius: 4px; font-size: var(--body-size); color: var(--text-secondary); border-left: 2px solid var(--accent);">
+                        Selected model: <strong class="text-accent">Qwen3 8B</strong> (highest BERTScore against ground
+                        truth reports)
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== SLIDE 8: BACKEND ==================== -->
     <section class="slide" data-slide="8">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Server Implementation</span>
             <h2 class="reveal">Backend Architecture</h2>
-            
+
             <div class="card-grid" style="margin-top: var(--content-gap);">
                 <div class="card reveal">
                     <div class="card-title">FastAPI Server</div>
@@ -1358,15 +1369,14 @@
         </div>
     </section>
 
-    <!-- ==================== SLIDE 9: FRONTEND ==================== -->
     <section class="slide" data-slide="9">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">User Interface</span>
             <h2 class="reveal">Frontend Implementation</h2>
-            
+
             <div class="card-grid" style="margin-top: var(--content-gap);">
                 <div class="card reveal">
                     <div class="card-title">Technician Dashboard</div>
@@ -1396,26 +1406,22 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="tags reveal" style="margin-top: var(--content-gap); justify-content: center;">
-                <span class="tag">React 18</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag">Material-UI</span>
-                <span class="tag">Plotly.js</span>
-                <span class="tag">Axios</span>
+                <span class="tag">React 18</span><span class="tag">TypeScript</span><span
+                    class="tag">Material-UI</span><span class="tag">Plotly.js</span><span class="tag">Axios</span>
             </div>
         </div>
     </section>
 
-    <!-- ==================== SLIDE 10: TECHNICIAN VIEW ==================== -->
     <section class="slide" data-slide="10">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Application Demo</span>
             <h2 class="reveal">Technician Workflow</h2>
-            
+
             <div class="two-column" style="margin-top: var(--content-gap);">
                 <div>
                     <ol class="numbered-list reveal">
@@ -1426,33 +1432,32 @@
                         <li>AI processing triggered automatically</li>
                         <li>View processing status</li>
                     </ol>
-                    
                     <div class="card reveal" style="margin-top: var(--element-gap);">
-                        <div class="card-text">
-                            <strong class="text-accent">Key:</strong> Glassmorphism UI, real-time status badges, toggle filters
-                        </div>
+                        <div class="card-text"><strong class="text-accent">Key:</strong> Glassmorphism UI, real-time
+                            status badges, toggle filters</div>
                     </div>
                 </div>
-                
-                <div class="card outlined reveal-scale" style="display: flex; align-items: center; justify-content: center; min-height: 250px; background: var(--bg-secondary);">
+                <div class="card outlined reveal-scale"
+                    style="display: flex; align-items: center; justify-content: center; min-height: 250px; background: var(--bg-secondary);">
                     <div style="text-align: center; color: var(--text-muted);">
-                        <div style="font-size: var(--h3-size); font-family: var(--font-display); font-style: italic; margin-bottom: 0.5rem;">[ Screenshot ]</div>
-                        <div style="font-size: var(--small-size);">Technician Dashboard</div>
+                        <div
+                            style="font-size: var(--h3-size); font-family: var(--font-display); font-style: italic; margin-bottom: 0.5rem;">
+                            [ Screenshot ]</div>
+                        <div style="font-size: var(--body-size);">Technician Dashboard</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== SLIDE 11: DOCTOR VIEW ==================== -->
     <section class="slide" data-slide="11">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Application Demo</span>
             <h2 class="reveal">Doctor Workflow</h2>
-            
+
             <div class="two-column" style="margin-top: var(--content-gap);">
                 <div>
                     <ol class="numbered-list reveal">
@@ -1463,33 +1468,32 @@
                         <li>Edit LLM-generated report draft</li>
                         <li>Finalize and sign the report</li>
                     </ol>
-                    
                     <div class="card reveal" style="margin-top: var(--element-gap);">
-                        <div class="card-text">
-                            <strong class="text-accent">Human-in-the-Loop:</strong> Doctor maintains full control over final diagnosis
-                        </div>
+                        <div class="card-text"><strong class="text-accent">Human-in-the-Loop:</strong> Doctor maintains
+                            full control over final diagnosis</div>
                     </div>
                 </div>
-                
-                <div class="card outlined reveal-scale" style="display: flex; align-items: center; justify-content: center; min-height: 250px; background: var(--bg-secondary);">
+                <div class="card outlined reveal-scale"
+                    style="display: flex; align-items: center; justify-content: center; min-height: 250px; background: var(--bg-secondary);">
                     <div style="text-align: center; color: var(--text-muted);">
-                        <div style="font-size: var(--h3-size); font-family: var(--font-display); font-style: italic; margin-bottom: 0.5rem;">[ Screenshot ]</div>
-                        <div style="font-size: var(--small-size);">EEG Viewer with AI overlays</div>
+                        <div
+                            style="font-size: var(--h3-size); font-family: var(--font-display); font-style: italic; margin-bottom: 0.5rem;">
+                            [ Screenshot ]</div>
+                        <div style="font-size: var(--body-size);">EEG Viewer with AI overlays</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== SLIDE 12: PATIENT VIEW ==================== -->
     <section class="slide" data-slide="12">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Application Demo</span>
             <h2 class="reveal">Patient Portal</h2>
-            
+
             <div class="two-column" style="margin-top: var(--content-gap);">
                 <div>
                     <ol class="numbered-list reveal">
@@ -1499,33 +1503,32 @@
                         <li>View report details</li>
                         <li>Download PDF report</li>
                     </ol>
-                    
                     <div class="card reveal" style="margin-top: var(--element-gap);">
-                        <div class="card-text">
-                            <strong class="text-accent">Access Control:</strong> Patients only see doctor-finalized reports
-                        </div>
+                        <div class="card-text"><strong class="text-accent">Access Control:</strong> Patients only see
+                            doctor-finalized reports</div>
                     </div>
                 </div>
-                
-                <div class="card outlined reveal-scale" style="display: flex; align-items: center; justify-content: center; min-height: 250px; background: var(--bg-secondary);">
+                <div class="card outlined reveal-scale"
+                    style="display: flex; align-items: center; justify-content: center; min-height: 250px; background: var(--bg-secondary);">
                     <div style="text-align: center; color: var(--text-muted);">
-                        <div style="font-size: var(--h3-size); font-family: var(--font-display); font-style: italic; margin-bottom: 0.5rem;">[ Screenshot ]</div>
-                        <div style="font-size: var(--small-size);">Patient Portal</div>
+                        <div
+                            style="font-size: var(--h3-size); font-family: var(--font-display); font-style: italic; margin-bottom: 0.5rem;">
+                            [ Screenshot ]</div>
+                        <div style="font-size: var(--body-size);">Patient Portal</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== SLIDE 13: CHALLENGES ==================== -->
     <section class="slide" data-slide="13">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Lessons Learned</span>
             <h2 class="reveal">Challenges & Solutions</h2>
-            
+
             <div class="card reveal" style="margin-top: var(--content-gap);">
                 <div class="challenge-row">
                     <div class="challenge-side">
@@ -1537,7 +1540,6 @@
                         <div class="challenge-text">Async processing with Celery workers & Redis queue</div>
                     </div>
                 </div>
-                
                 <div class="challenge-row">
                     <div class="challenge-side">
                         <div class="challenge-label">Challenge</div>
@@ -1548,7 +1550,6 @@
                         <div class="challenge-text">Custom prompt engineering with structured output format</div>
                     </div>
                 </div>
-                
                 <div class="challenge-row">
                     <div class="challenge-side">
                         <div class="challenge-label">Challenge</div>
@@ -1559,7 +1560,6 @@
                         <div class="challenge-text">Decimation, caching, and segment-based loading</div>
                     </div>
                 </div>
-                
                 <div class="challenge-row">
                     <div class="challenge-side">
                         <div class="challenge-label">Challenge</div>
@@ -1574,71 +1574,74 @@
         </div>
     </section>
 
-    <!-- ==================== SLIDE 14: FIELD VISITS ==================== -->
     <section class="slide" data-slide="14">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Validation</span>
             <h2 class="reveal">Field Visits</h2>
-            
-            <div class="two-column" style="margin-top: var(--content-gap);">
+
+            <div class="two-column align-center" style="margin-top: var(--content-gap);">
                 <div>
                     <div class="card reveal" style="margin-bottom: var(--element-gap);">
-                        <h3 style="margin-bottom: 0.75rem;">Al Shafi Hospital <span class="text-secondary" style="font-family: var(--font-body); font-weight: 500; font-size: var(--small-size);">&mdash; 26 Oct, 2025</span></h3>
+                        <h3 style="margin-bottom: 0.75rem;">Al Shafi Hospital <span class="text-secondary"
+                                style="font-family: var(--font-body); font-weight: 500; font-size: var(--body-size);">&mdash;
+                                26 Oct, 2025</span></h3>
                         <ul class="feature-list">
-                            <li><strong>Data Collected:</strong> 5 EEGs (<span class="text-accent"><strong>2 abnormal</strong></span>)</li>
+                            <li><strong>Data Collected:</strong> 5 EEGs (<span class="text-accent"><strong>2
+                                        abnormal</strong></span>)</li>
                             <li><strong>Key Feedback:</strong> User flow and overall HCI improvements</li>
                         </ul>
                     </div>
-
                     <div class="card reveal" style="margin-bottom: var(--element-gap);">
-                        <h3 style="margin-bottom: 0.75rem;">Sachet Hospital <span class="text-secondary" style="font-family: var(--font-body); font-weight: 500; font-size: var(--small-size);">&mdash; 25 Jan, 2026</span></h3>
+                        <h3 style="margin-bottom: 0.75rem;">Sachet Hospital <span class="text-secondary"
+                                style="font-family: var(--font-body); font-weight: 500; font-size: var(--body-size);">&mdash;
+                                25 Jan, 2026</span></h3>
                         <ul class="feature-list">
-                            <li><strong>Data Collected:</strong> 6 EEGs (<span class="text-accent"><strong>1 abnormal</strong></span>)</li>
+                            <li><strong>Data Collected:</strong> 6 EEGs (<span class="text-accent"><strong>1
+                                        abnormal</strong></span>)</li>
                             <li><strong>Key Feedback:</strong> Performance and responsiveness</li>
                         </ul>
                     </div>
-
-                    <div class="card reveal">
-                        <div class="card-title">What We Got From Field Visits</div>
-                        <ul class="feature-list" style="margin-top: 0.5rem;">
+                    <div class="card reveal" style="margin-bottom: var(--element-gap);">
+                        <h3 style="margin-bottom: 0.75rem;">What We Got From Field Visits</h3>
+                        <ul class="feature-list">
                             <li><strong>Dataset Growth</strong></li>
                             <li><strong>Actionable Feedback</strong></li>
                         </ul>
                     </div>
                 </div>
-
-                <div class="image-frame reveal-scale">
-                    <img src="assets/field.jpeg" alt="Field Visit" class="slide-image" style="width: 100%; max-height: 52vh; object-fit: cover;">
-                    <div style="margin-top: 0.75rem; font-size: var(--small-size); color: var(--text-secondary); text-align: center;">Field Visit with clinicians (data collection & feedback)</div>
+                <div class="image-frame reveal-scale" style="padding: 0.5rem;">
+                    <img src="assets/field.jpeg" alt="Field Visit" class="slide-image"
+                        style="width: 100%; max-height: 55vh; object-fit: cover;">
+                    <div
+                        style="margin-top: 0.75rem; font-size: var(--small-size); color: var(--text-secondary); text-align: center;">
+                        Field Visit with clinicians (data collection & feedback)</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== SLIDE 15: TESTING PLAN ==================== -->
     <section class="slide" data-slide="15">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Quality Assurance</span>
             <h2 class="reveal">Testing Plan</h2>
-            
-            <div class="two-column" style="margin-top: var(--content-gap);">
+
+            <div class="uneven-columns align-center" style="margin-top: var(--content-gap);">
                 <div>
                     <div class="card reveal" style="margin-bottom: var(--element-gap);">
                         <h3 style="margin-bottom: 0.75rem;">Functional Testing</h3>
                         <ul class="feature-list">
                             <li><strong>Unit:</strong> pytest (Backend), Jest + RTL (Frontend)</li>
-                            <li><strong>Integration:</strong> key API workflows</li>
+                            <li><strong>Integration: </strong> key API workflows</li>
                             <li><strong>System:</strong> upload -> inference -> report</li>
                             <li><strong>UAT:</strong> clinician validation</li>
                         </ul>
                     </div>
-                    
                     <div class="card reveal">
                         <h3 style="margin-bottom: 0.75rem;">Non-Functional Testing</h3>
                         <ul class="feature-list">
@@ -1648,59 +1651,56 @@
                         </ul>
                     </div>
                 </div>
-                
-                <div class="image-frame reveal-scale" style="display: flex; flex-direction: column; justify-content: center;">
-                    <img src="assets/coverage.png" alt="Test coverage report" class="slide-image" style="width: 100%; max-height: min(52vh, 420px); object-fit: contain;">
-                    <div style="margin-top: 0.75rem; font-size: var(--small-size); color: var(--text-secondary); text-align: center;">Coverage summary</div>
+                <div class="image-frame reveal-scale"
+                    style="display: flex; flex-direction: column; justify-content: center; padding: 0.5rem;">
+                    <img src="assets/coverage.png" alt="Test coverage report" class="slide-image"
+                        style="width: 100%; max-height: 60vh; object-fit: contain;">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== SLIDE 16: UN SDG ==================== -->
     <section class="slide" data-slide="16">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Global Impact</span>
             <h2 class="reveal">UN Sustainable Development Goals</h2>
-            
-            <div class="two-column align-center" style="margin-top: var(--content-gap);">
+
+            <div class="uneven-columns align-center" style="margin-top: var(--content-gap);">
                 <div>
-                    <h3 class="reveal" style="margin-bottom: var(--element-gap); color: var(--accent);">SDG 3: Good Health and Well-being</h3>
-                    
-                    <p class="subtitle reveal" style="margin-bottom: var(--element-gap);">
-                        EEGWriter directly contributes to ensuring healthy lives and promoting well-being for all at all ages.
-                    </p>
-                    
+                    <h3 class="reveal" style="margin-bottom: var(--element-gap); color: var(--accent);">SDG 3: Health
+                        and Well-being</h3>
                     <ul class="feature-list reveal">
-                        <li><strong>Healthcare Accessibility:</strong> AI assistance reduces dependency on specialist availability</li>
-                        <li><strong>Neurologist Shortage:</strong> Addresses critical gap of 210 neurologists for 220M+ population</li>
+                        <li><strong>Healthcare Accessibility:</strong> AI assistance reduces dependency on specialist
+                            availability
+                        </li>
+                        <li><strong>Neurologist Shortage:</strong> Addresses critical gap of 210 neurologists for 220M+
+                            population</li>
                         <li><strong>Faster Diagnosis:</strong> Reduces EEG review time from 40 minutes to minutes</li>
                         <li><strong>Quality Care:</strong> Standardized, consistent diagnostic reports</li>
                         <li><strong>Rural Reach:</strong> Enables quality diagnostics in underserved areas</li>
                     </ul>
                 </div>
-                
-                <div class="image-frame reveal-scale" style="display: flex; flex-direction: column; justify-content: center;">
-                    <img src="assets/sdg3.png" alt="SDG 3: Good Health and Well-being" class="slide-image" style="width: 100%; max-height: min(50vh, 420px); object-fit: contain;">
-                    <div style="margin-top: 0.75rem; font-size: var(--small-size); color: var(--text-secondary); text-align: center;">SDG 3: Good Health and Well-being</div>
+                <div class="image-frame reveal-scale"
+                    style="display: flex; flex-direction: column; justify-content: center; padding: 0.5rem;">
+                    <img src="assets/sdg3.png" alt="SDG 3: Good Health and Well-being" class="slide-image"
+                        style="width: 100%; max-height: 55vh; object-fit: contain;">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== SLIDE 17: PROJECT MANAGEMENT ==================== -->
     <section class="slide" data-slide="17">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Development Process</span>
             <h2 class="reveal">Project Management</h2>
-            
-            <div class="two-column" style="margin-top: var(--content-gap);">
+
+            <div class="uneven-columns align-center" style="margin-top: var(--content-gap);">
                 <div>
                     <div class="card reveal" style="margin-bottom: var(--element-gap);">
                         <h3 style="margin-bottom: 0.75rem;">Tools & Methodology</h3>
@@ -1708,69 +1708,71 @@
                             <li><strong>Jira:</strong> Sprint planning, task tracking, backlog management</li>
                             <li><strong>GitHub:</strong> Version control, code reviews, issue tracking</li>
                             <li><strong>Agile/Scrum:</strong> 2-week sprints with regular standups</li>
-                            <li><strong>Discord:</strong> Team communication & quick sync</li>
+                            <li><strong>Slack:</strong> Team communication & quick sync</li>
                         </ul>
                     </div>
-                    
                     <div class="card reveal">
                         <h3 style="margin-bottom: 0.75rem;">Development Model</h3>
                         <ul class="feature-list">
                             <li>Iterative development with continuous integration</li>
                             <li>Feature branches with pull request reviews</li>
-                            <li>Regular advisor meetings for feedback</li>
+                            <li>Weekly advisor meetings for feedback</li>
                             <li>Documentation maintained alongside code</li>
                         </ul>
                     </div>
                 </div>
-                
-                <div class="image-frame reveal-scale" style="padding: 0.9rem;">
+
+                <div class="image-frame reveal-scale" style="padding: 0.5rem;">
                     <div style="display: grid; grid-template-columns: 1fr; gap: 0.75rem;">
-                        <img src="assets/jira1.png" alt="Jira Board Screenshot 1" class="slide-image" style="width: 100%; max-height: 22vh; object-fit: cover;">
-                        <img src="assets/jira2.png" alt="Jira Board Screenshot 2" class="slide-image" style="width: 100%; max-height: 22vh; object-fit: cover;">
+                        <img src="assets/jira1.png" alt="Jira Board Screenshot 1" class="slide-image"
+                            style="width: 100%; max-height: 35vh; object-fit: contain;">
+                        <img src="assets/jira2.png" alt="Jira Board Screenshot 2" class="slide-image"
+                            style="width: 100%; max-height: 35vh; object-fit: contain;">
                     </div>
-                    <div style="margin-top: 0.75rem; font-size: var(--small-size); color: var(--text-secondary); text-align: center;">Jira boards used for sprints, backlog, and task tracking</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== SLIDE 18: REMAINING WORK ==================== -->
     <section class="slide" data-slide="18">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Road to Final</span>
             <h2 class="reveal">Remaining Work & Timeline</h2>
-            
-            <div class="two-column" style="margin-top: var(--content-gap);">
-                <div class="timeline reveal">
-                    <div class="timeline-item">
-                        <div class="timeline-title">Improve Model Adaptability</div>
-                        <div class="timeline-text">Generalize performance across diverse EEG setups and patient populations</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-title">Optimize UI/UX Response Time</div>
-                        <div class="timeline-text">Reduce rendering latency in EEG viewer and streamline interactions</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-title">Gather Clinician Feedback</div>
-                        <div class="timeline-text">Structured feedback loop from neurologists to validate output quality</div>
+
+            <div class="timeline-layout" style="margin-top: var(--content-gap);">
+                <div class="card reveal timeline-card">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-title">Improve Model Adaptability</div>
+                            <div class="timeline-text">Generalize performance across diverse EEG setups and patient
+                                populations</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-title">Optimize UI/UX Response Time</div>
+                            <div class="timeline-text">Reduce rendering latency in EEG viewer and streamline interactions
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-title">Gather Clinician Feedback</div>
+                            <div class="timeline-text">Structured feedback loop from neurologists to validate output quality
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div>
-                    <div class="card reveal" style="margin-bottom: var(--element-gap);">
+                <div class="stacked-cards">
+                    <div class="card reveal">
                         <div class="card-title">Focus Areas</div>
                         <ul class="feature-list" style="margin-top: 0.5rem;">
-                            <li><strong>AI:</strong> Robustness & adaptability improvements</li>
-                            <li><strong>Frontend:</strong> Performance optimizations for large EEG files</li>
-                            <li><strong>Clinical:</strong> Feedback-driven refinements</li>
+                            <li><strong>AI: </strong>Robustness & adaptability improvements</li>
+                            <li><strong>Frontend: </strong>Performance optimizations for large EEG files</li>
+                            <li><strong>Clinical: </strong>Feedback-driven refinements</li>
                         </ul>
                     </div>
-                    
                     <div class="card reveal">
-                        <div class="card-title">Status</div>
+                        <div class="card-title">Status Overview</div>
                         <ul class="feature-list" style="margin-top: 0.5rem;">
                             <li>Core system implementation complete</li>
                             <li>Primary integrations (backend, frontend, LLM, visualization) complete</li>
@@ -1782,49 +1784,45 @@
         </div>
     </section>
 
-    <!-- ==================== SLIDE 19: THANK YOU ==================== -->
     <section class="slide title-slide" data-slide="19">
         <div class="botanical botanical-1"></div>
         <div class="botanical botanical-2"></div>
         <div class="botanical botanical-3"></div>
-        
+
         <div class="slide-content">
             <span class="label reveal">Questions?</span>
             <h1 class="reveal">Thank You</h1>
-            
-            <div class="divider reveal">
+
+            <div class="divider reveal" style="justify-content: center;">
                 <div class="divider-line"></div>
                 <div class="divider-diamond"></div>
                 <div class="divider-line"></div>
             </div>
-            
-            <p class="subtitle reveal">We appreciate your time and feedback</p>
-            
+
+            <p class="subtitle reveal" style="margin: 0 auto var(--content-gap) auto;">We appreciate your time and
+                feedback</p>
+
             <div class="team-row reveal">
                 <div class="badge">Muhammad Arsalan Khan</div>
                 <div class="badge">Abdullah Waqas</div>
                 <div class="badge">Muhammad Athar</div>
             </div>
-            
-            <p class="meta-info reveal" style="color: var(--accent);">
-                EEGWriter &mdash; Empowering Neurologists with AI
+
+            <p class="meta-info reveal" style="font-size: var(--body-size); color: var(--accent);">
+                EEGWriter
             </p>
         </div>
     </section>
 
     <script>
-        /* ===========================================
-           SLIDE PRESENTATION CONTROLLER
-           =========================================== */
         class SlidePresentation {
             constructor() {
                 this.slides = document.querySelectorAll('.slide');
                 this.totalSlides = this.slides.length;
                 this.currentSlide = 0;
-                
                 this.init();
             }
-            
+
             init() {
                 document.getElementById('totalSlides').textContent = String(this.totalSlides).padStart(2, '0');
                 this.createNavDots();
@@ -1834,10 +1832,9 @@
                 this.setupScrollDetection();
                 this.updateUI();
             }
-            
+
             createNavDots() {
                 const navDots = document.getElementById('navDots');
-                
                 this.slides.forEach((slide, index) => {
                     const dot = document.createElement('button');
                     dot.className = 'nav-dot';
@@ -1846,7 +1843,7 @@
                     navDots.appendChild(dot);
                 });
             }
-            
+
             setupIntersectionObserver() {
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
@@ -1857,118 +1854,72 @@
                             this.updateUI();
                         }
                     });
-                }, { threshold: 0.5 });
-                
+                }, {threshold: 0.5});
                 this.slides.forEach(slide => observer.observe(slide));
             }
-            
+
             setupKeyboardNav() {
                 document.addEventListener('keydown', (e) => {
-                    switch(e.key) {
-                        case 'ArrowDown':
-                        case 'ArrowRight':
-                        case ' ':
-                        case 'PageDown':
-                            e.preventDefault();
-                            this.nextSlide();
-                            break;
-                        case 'ArrowUp':
-                        case 'ArrowLeft':
-                        case 'PageUp':
-                            e.preventDefault();
-                            this.prevSlide();
-                            break;
+                    switch (e.key) {
+                        case 'ArrowDown': case 'ArrowRight': case ' ': case 'PageDown':
+                            e.preventDefault(); this.nextSlide(); break;
+                        case 'ArrowUp': case 'ArrowLeft': case 'PageUp':
+                            e.preventDefault(); this.prevSlide(); break;
                         case 'Home':
-                            e.preventDefault();
-                            this.goToSlide(0);
-                            break;
+                            e.preventDefault(); this.goToSlide(0); break;
                         case 'End':
-                            e.preventDefault();
-                            this.goToSlide(this.totalSlides - 1);
-                            break;
+                            e.preventDefault(); this.goToSlide(this.totalSlides - 1); break;
                     }
                 });
             }
-            
+
             setupTouchNav() {
-                let touchStartY = 0;
-                let touchStartX = 0;
-                
+                let touchStartY = 0; let touchStartX = 0;
                 document.addEventListener('touchstart', (e) => {
-                    touchStartY = e.touches[0].clientY;
-                    touchStartX = e.touches[0].clientX;
-                }, { passive: true });
-                
+                    touchStartY = e.touches[0].clientY; touchStartX = e.touches[0].clientX;
+                }, {passive: true});
                 document.addEventListener('touchend', (e) => {
-                    const touchEndY = e.changedTouches[0].clientY;
-                    const touchEndX = e.changedTouches[0].clientX;
-                    const diffY = touchStartY - touchEndY;
-                    const diffX = touchStartX - touchEndX;
-                    
+                    const diffY = touchStartY - e.changedTouches[0].clientY;
+                    const diffX = touchStartX - e.changedTouches[0].clientX;
                     if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 50) {
-                        if (diffY > 0) {
-                            this.nextSlide();
-                        } else {
-                            this.prevSlide();
-                        }
+                        diffY > 0 ? this.nextSlide() : this.prevSlide();
                     }
-                }, { passive: true });
+                }, {passive: true});
             }
-            
+
             setupScrollDetection() {
                 let scrollTimeout;
-                
                 window.addEventListener('scroll', () => {
                     clearTimeout(scrollTimeout);
                     scrollTimeout = setTimeout(() => {
-                        const scrollPosition = window.scrollY;
-                        const windowHeight = window.innerHeight;
-                        const currentIndex = Math.round(scrollPosition / windowHeight);
-                        
+                        const currentIndex = Math.round(window.scrollY / window.innerHeight);
                         if (currentIndex !== this.currentSlide && currentIndex >= 0 && currentIndex < this.totalSlides) {
                             this.currentSlide = currentIndex;
                             this.updateUI();
                         }
                     }, 50);
-                }, { passive: true });
+                }, {passive: true});
             }
-            
+
             goToSlide(index) {
                 if (index >= 0 && index < this.totalSlides) {
                     this.currentSlide = index;
-                    this.slides[index].scrollIntoView({ behavior: 'smooth' });
+                    this.slides[index].scrollIntoView({behavior: 'smooth'});
                     this.updateUI();
                 }
             }
-            
-            nextSlide() {
-                if (this.currentSlide < this.totalSlides - 1) {
-                    this.goToSlide(this.currentSlide + 1);
-                }
-            }
-            
-            prevSlide() {
-                if (this.currentSlide > 0) {
-                    this.goToSlide(this.currentSlide - 1);
-                }
-            }
-            
+            nextSlide() {if (this.currentSlide < this.totalSlides - 1) this.goToSlide(this.currentSlide + 1);}
+            prevSlide() {if (this.currentSlide > 0) this.goToSlide(this.currentSlide - 1);}
+
             updateUI() {
                 document.getElementById('currentSlide').textContent = String(this.currentSlide + 1).padStart(2, '0');
-                
-                const progress = ((this.currentSlide + 1) / this.totalSlides) * 100;
-                document.getElementById('progress').style.width = `${progress}%`;
-                
-                const dots = document.querySelectorAll('.nav-dot');
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === this.currentSlide);
-                });
+                document.getElementById('progress').style.width = `${((this.currentSlide + 1) / this.totalSlides) * 100}%`;
+                document.querySelectorAll('.nav-dot').forEach((dot, index) => dot.classList.toggle('active', index === this.currentSlide));
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            new SlidePresentation();
-        });
+        document.addEventListener('DOMContentLoaded', () => new SlidePresentation());
     </script>
 </body>
+
 </html>
