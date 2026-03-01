@@ -37,10 +37,10 @@
             --font-body: 'Satoshi', sans-serif;
             --title-size: clamp(2.5rem, 8vw, 6rem);
             --h2-size: clamp(1.75rem, 4.5vw, 3rem);
-            --h3-size: clamp(1.1rem, 2vw, 1.4rem);
-            --subtitle-size: clamp(1rem, 2vw, 1.25rem);
-            --body-size: clamp(0.875rem, 1.4vw, 1.1rem);
-            --small-size: clamp(0.75rem, 1vw, 0.875rem);
+            --h3-size: clamp(1.2rem, 2.2vw, 1.55rem);
+            --subtitle-size: clamp(1.1rem, 2.2vw, 1.35rem);
+            --body-size: clamp(0.98rem, 1.6vw, 1.2rem);
+            --small-size: clamp(0.85rem, 1.1vw, 0.95rem);
             
             /* Spacing */
             --slide-padding: clamp(2rem, 6vw, 6rem);
@@ -1228,7 +1228,7 @@
                 <span class="tag">Redis</span>
                 <span class="tag">PyTorch</span>
                 <span class="tag">Docker</span>
-                <span class="tag">Llama 3.1</span>
+                <span class="tag">Qwen3 8B</span>
             </div>
         </div>
     </section>
@@ -1283,7 +1283,7 @@
             
             <div class="two-column" style="margin-top: var(--content-gap);">
                 <div>
-                    <h3 class="reveal" style="margin-bottom: var(--element-gap);">Llama 3.1 8B Instruct</h3>
+                    <h3 class="reveal" style="margin-bottom: var(--element-gap);">Qwen3 8B</h3>
                     
                     <ol class="numbered-list reveal">
                         <li>Global prediction from NeuroGate</li>
@@ -1291,19 +1291,17 @@
                         <li>PDR (Posterior Dominant Rhythm)</li>
                         <li>Patient context and metadata</li>
                         <li>Custom prompt engineering</li>
+                        <li>Model selection via experiments (best BERTScore vs ground truth)</li>
                     </ol>
                 </div>
                 
                 <div class="card reveal-scale">
-                    <div class="card-title">Generated Sections</div>
-                    <ul class="feature-list" style="margin-top: 0.75rem;">
-                        <li><strong>Findings:</strong> EEG description</li>
-                        <li><strong>Impression:</strong> Clinical interpretation</li>
-                        <li><strong>Technique:</strong> Recording parameters</li>
-                        <li><strong>Indications:</strong> Reason for study</li>
-                    </ul>
+                    <div class="card-title">Experiment Results (BERTScore)</div>
+                    <div class="image-frame" style="margin-top: 0.75rem;">
+                        <img src="assets/llm_scores.jpeg" alt="LLM experiment results (BERTScore vs ground truth)" class="slide-image" style="width: 100%; max-height: min(40vh, 340px);">
+                    </div>
                     <div style="margin-top: 1rem; padding: 0.75rem; background: var(--bg-tertiary); border-radius: 4px; font-size: var(--small-size); color: var(--text-secondary); border-left: 2px solid var(--accent);">
-                        Human-in-the-loop: Doctor reviews AI draft before finalizing
+                        Selected model: <strong class="text-accent">Qwen3 8B</strong> (highest BERTScore against ground truth reports)
                     </div>
                 </div>
             </div>
@@ -1606,8 +1604,8 @@
                     <div class="card reveal">
                         <div class="card-title">What We Got From Field Visits</div>
                         <ul class="feature-list" style="margin-top: 0.5rem;">
-                            <li><strong>Dataset Growth:</strong> 11 real patient EEGs collected for evaluation</li>
-                            <li><strong>Actionable Feedback:</strong> Clear guidance on usability + performance improvements</li>
+                            <li><strong>Dataset Growth</strong></li>
+                            <li><strong>Actionable Feedback</strong></li>
                         </ul>
                     </div>
                 </div>
@@ -1634,28 +1632,26 @@
                     <div class="card reveal" style="margin-bottom: var(--element-gap);">
                         <h3 style="margin-bottom: 0.75rem;">Functional Testing</h3>
                         <ul class="feature-list">
-                            <li><strong>Unit Tests:</strong> pytest (Backend), Jest + React Testing Library (Frontend)</li>
-                            <li><strong>Integration Tests:</strong> API endpoint testing, service communication validation</li>
-                            <li><strong>System Tests:</strong> End-to-end workflow from upload to report generation</li>
-                            <li><strong>User Acceptance:</strong> Clinician validation at Al Shafi Hospital</li>
+                            <li><strong>Unit:</strong> pytest (Backend), Jest + RTL (Frontend)</li>
+                            <li><strong>Integration:</strong> key API workflows</li>
+                            <li><strong>System:</strong> upload -> inference -> report</li>
+                            <li><strong>UAT:</strong> clinician validation</li>
                         </ul>
                     </div>
                     
                     <div class="card reveal">
                         <h3 style="margin-bottom: 0.75rem;">Non-Functional Testing</h3>
                         <ul class="feature-list">
-                            <li><strong>Performance:</strong> EEG processing time, API response benchmarks</li>
-                            <li><strong>Security:</strong> JWT authentication, role-based access control</li>
-                            <li><strong>Code Quality:</strong> Black formatting, mypy type checking</li>
+                            <li><strong>Performance:</strong> processing time + API latency</li>
+                            <li><strong>Security:</strong> JWT + RBAC</li>
+                            <li><strong>Quality:</strong> Black + mypy</li>
                         </ul>
                     </div>
                 </div>
                 
-                <div class="card outlined reveal-scale" style="display: flex; align-items: center; justify-content: center; min-height: 280px; background: var(--bg-secondary);">
-                    <div style="text-align: center; color: var(--text-muted);">
-                        <div style="font-size: var(--h3-size); font-family: var(--font-display); font-style: italic; margin-bottom: 0.5rem;">[ Screenshot ]</div>
-                        <div style="font-size: var(--small-size);">Test Results / Coverage Report</div>
-                    </div>
+                <div class="image-frame reveal-scale" style="display: flex; flex-direction: column; justify-content: center;">
+                    <img src="assets/coverage.png" alt="Test coverage report" class="slide-image" style="width: 100%; max-height: min(52vh, 420px); object-fit: contain;">
+                    <div style="margin-top: 0.75rem; font-size: var(--small-size); color: var(--text-secondary); text-align: center;">Coverage summary</div>
                 </div>
             </div>
         </div>
@@ -1687,11 +1683,9 @@
                     </ul>
                 </div>
                 
-                <div class="card outlined reveal-scale" style="display: flex; align-items: center; justify-content: center; min-height: 280px; background: var(--bg-secondary);">
-                    <div style="text-align: center; color: var(--text-muted);">
-                        <div style="font-size: var(--h3-size); font-family: var(--font-display); font-style: italic; margin-bottom: 0.5rem;">[ SDG 3 Icon ]</div>
-                        <div style="font-size: var(--small-size);">Good Health and Well-being</div>
-                    </div>
+                <div class="image-frame reveal-scale" style="display: flex; flex-direction: column; justify-content: center;">
+                    <img src="assets/sdg3.png" alt="SDG 3: Good Health and Well-being" class="slide-image" style="width: 100%; max-height: min(50vh, 420px); object-fit: contain;">
+                    <div style="margin-top: 0.75rem; font-size: var(--small-size); color: var(--text-secondary); text-align: center;">SDG 3: Good Health and Well-being</div>
                 </div>
             </div>
         </div>
