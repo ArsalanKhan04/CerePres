@@ -576,6 +576,33 @@
             box-shadow: 0 0 30px rgba(197, 160, 89, 0.05);
         }
 
+        .pm-screenshots {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+        }
+
+        .pm-screenshots img {
+            max-height: 30vh;
+        }
+
+        .pm-layout {
+            grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.1fr);
+        }
+
+        .pm-left .card {
+            padding: clamp(1rem, 2vw, 1.5rem);
+        }
+
+        .pm-left .feature-list li {
+            font-size: var(--small-size);
+            line-height: 1.45;
+        }
+
+        .pm-frame {
+            padding: 0.35rem;
+        }
+
         /* ===========================================
            ARCHITECTURE DIAGRAM
            =========================================== */
@@ -933,10 +960,10 @@
             html,
             body {
                 width: 100% !important;
-                height: 100% !important;
+                height: auto !important;
                 margin: 0;
                 padding: 0;
-                overflow: hidden !important;
+                overflow: visible !important;
                 scroll-snap-type: none;
                 background: var(--bg-primary) !important;
             }
@@ -960,16 +987,39 @@
 
             .slide {
                 width: 100vw !important;
-                height: 100vh !important;
-                max-height: 100vh !important;
+                min-height: 100vh !important;
                 page-break-after: always;
                 page-break-inside: avoid;
                 scroll-snap-align: none;
                 position: relative;
                 overflow: hidden;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                display: block;
+            }
+
+            .slide-content {
+                width: 100% !important;
+                max-width: 1200px !important;
+                margin: 0 auto !important;
+            }
+
+            .two-column,
+            .uneven-columns,
+            .timeline-layout {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: var(--content-gap) !important;
+                align-items: start !important;
+            }
+
+            .timeline-layout {
+                grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr) !important;
+            }
+
+            .two-column>*,
+            .uneven-columns>*,
+            .timeline-layout>* {
+                break-inside: avoid;
+                page-break-inside: avoid;
             }
 
             /* Extra safety compression for the title slide on PDF */
@@ -1437,14 +1487,8 @@
                             status badges, toggle filters</div>
                     </div>
                 </div>
-                <div class="card outlined reveal-scale"
-                    style="display: flex; align-items: center; justify-content: center; min-height: 250px; background: var(--bg-secondary);">
-                    <div style="text-align: center; color: var(--text-muted);">
-                        <div
-                            style="font-size: var(--h3-size); font-family: var(--font-display); font-style: italic; margin-bottom: 0.5rem;">
-                            [ Screenshot ]</div>
-                        <div style="font-size: var(--body-size);">Technician Dashboard</div>
-                    </div>
+                <div class="card outlined reveal-scale" style="padding: 0; overflow: hidden;">
+                    <img src="assets/technician_dashboard.png" alt="Technician Dashboard" class="slide-image" />
                 </div>
             </div>
         </div>
@@ -1473,14 +1517,8 @@
                             full control over final diagnosis</div>
                     </div>
                 </div>
-                <div class="card outlined reveal-scale"
-                    style="display: flex; align-items: center; justify-content: center; min-height: 250px; background: var(--bg-secondary);">
-                    <div style="text-align: center; color: var(--text-muted);">
-                        <div
-                            style="font-size: var(--h3-size); font-family: var(--font-display); font-style: italic; margin-bottom: 0.5rem;">
-                            [ Screenshot ]</div>
-                        <div style="font-size: var(--body-size);">EEG Viewer with AI overlays</div>
-                    </div>
+                <div class="card outlined reveal-scale" style="padding: 0; overflow: hidden;">
+                    <img src="assets/eeg_viewer.png" alt="EEG Viewer with AI Overlays" class="slide-image" />
                 </div>
             </div>
         </div>
@@ -1508,14 +1546,8 @@
                             doctor-finalized reports</div>
                     </div>
                 </div>
-                <div class="card outlined reveal-scale"
-                    style="display: flex; align-items: center; justify-content: center; min-height: 250px; background: var(--bg-secondary);">
-                    <div style="text-align: center; color: var(--text-muted);">
-                        <div
-                            style="font-size: var(--h3-size); font-family: var(--font-display); font-style: italic; margin-bottom: 0.5rem;">
-                            [ Screenshot ]</div>
-                        <div style="font-size: var(--body-size);">Patient Portal</div>
-                    </div>
+                <div class="card outlined reveal-scale" style="padding: 0; overflow: hidden;">
+                    <img src="assets/patient_portal.png" alt="Patient Portal" class="slide-image" />
                 </div>
             </div>
         </div>
@@ -1700,8 +1732,8 @@
             <span class="label reveal">Development Process</span>
             <h2 class="reveal">Project Management</h2>
 
-            <div class="uneven-columns align-center" style="margin-top: var(--content-gap);">
-                <div>
+            <div class="uneven-columns align-center pm-layout" style="margin-top: var(--content-gap);">
+                <div class="pm-left">
                     <div class="card reveal" style="margin-bottom: var(--element-gap);">
                         <h3 style="margin-bottom: 0.75rem;">Tools & Methodology</h3>
                         <ul class="feature-list">
@@ -1722,12 +1754,12 @@
                     </div>
                 </div>
 
-                <div class="image-frame reveal-scale" style="padding: 0.5rem;">
-                    <div style="display: grid; grid-template-columns: 1fr; gap: 0.75rem;">
+                <div class="image-frame reveal-scale pm-frame">
+                    <div class="pm-screenshots">
                         <img src="assets/jira1.png" alt="Jira Board Screenshot 1" class="slide-image"
-                            style="width: 100%; max-height: 35vh; object-fit: contain;">
+                            style="width: 100%; object-fit: contain;">
                         <img src="assets/jira2.png" alt="Jira Board Screenshot 2" class="slide-image"
-                            style="width: 100%; max-height: 35vh; object-fit: contain;">
+                            style="width: 100%; object-fit: contain;">
                     </div>
                 </div>
             </div>
@@ -1752,12 +1784,14 @@
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-title">Optimize UI/UX Response Time</div>
-                            <div class="timeline-text">Reduce rendering latency in EEG viewer and streamline interactions
+                            <div class="timeline-text">Reduce rendering latency in EEG viewer and streamline
+                                interactions
                             </div>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-title">Gather Clinician Feedback</div>
-                            <div class="timeline-text">Structured feedback loop from neurologists to validate output quality
+                            <div class="timeline-text">Structured feedback loop from neurologists to validate output
+                                quality
                             </div>
                         </div>
                     </div>
